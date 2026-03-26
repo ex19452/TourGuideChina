@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="中国旅游向导 - 专业中文导游服务，定制深度游，带你探索真实的中国。资深导游团队，个性化行程，无忧旅行体验。">
+    <meta name="keywords" content="中国导游, 旅游向导, 私人导游, 中国旅行, 定制旅游, tour guide china">
+    <meta name="author" content="TourGuideChina">
+    <title>中国旅游向导 | 专业中文导游服务 - tourguidechina.com</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e2a3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 头部导航 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c2410c, #e07c3c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #c2410c;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c3e4e;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #c2410c;
+        }
+
+        /* 语言切换器 */
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            background: #f0e4da;
+            border-radius: 40px;
+            padding: 4px 8px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #5a3e2e;
+        }
+        .lang-btn.active {
+            background: #c2410c;
+            color: white;
+            box-shadow: 0 2px 6px rgba(194,65,12,0.3);
+        }
+        .lang-btn:not(.active):hover {
+            background: #e2cfbf;
+        }
+
+        .btn-primary {
+            background-color: #c2410c;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.25s;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(194, 65, 12, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #9b2f06;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #c2410c;
+            color: #c2410c;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-outline:hover {
+            background: #c2410c;
+            color: white;
+        }
+
+        /* Hero区域 */
+        .hero {
+            background: linear-gradient(107deg, #fff4e8 0%, #ffe6d5 100%);
+            padding: 70px 0 90px;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 48px;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            background: rgba(194, 65, 12, 0.12);
+            color: #c2410c;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #1e2a3e;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #4a5b6e;
+            margin-bottom: 32px;
+            max-width: 540px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #c2410c;
+        }
+        .hero-image {
+            flex: 1;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #1e2a3e;
+        }
+        .section-sub {
+            text-align: center;
+            color: #5f6c7a;
+            max-width: 680px;
+            margin: 0 auto 48px auto;
+            font-size: 1.1rem;
+        }
+        section {
+            padding: 80px 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: #fef9f4;
+            padding: 32px 24px;
+            border-radius: 28px;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #c2410c;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .guides-grid, .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .guide-card, .tour-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+            transition: 0.25s ease;
+            border: 1px solid #f0e4da;
+        }
+        .guide-card:hover, .tour-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+        }
+        .guide-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background: #e2cfbf;
+        }
+        .guide-info, .tour-info {
+            padding: 24px;
+        }
+        .guide-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .guide-lang {
+            color: #c2410c;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        .tour-price {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #c2410c;
+            margin: 12px 0;
+        }
+        .testimonials {
+            background: #fff8f3;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .testi-card {
+            background: white;
+            padding: 32px;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f2e4da;
+        }
+        .testi-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #2c3e4e;
+        }
+        .testi-author {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .testi-author i {
+            font-size: 2rem;
+            color: #c2410c;
+        }
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            padding: 40px;
+            border: 1px solid #ffe1cf;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-form {
+            flex: 1.2;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e2cfbf;
+            border-radius: 28px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: #fefaf7;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #c2410c;
+            box-shadow: 0 0 0 3px rgba(194,65,12,0.1);
+        }
+        .footer {
+            background: #1e2a3e;
+            color: #cbd5e1;
+            padding: 48px 0 24px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: #cbd5e1;
+            margin-right: 20px;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #c2410c;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #2d3e52;
+            padding-top: 24px;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .contact-flex {
+                padding: 24px;
+            }
+            .hero-grid {
+                flex-direction: column;
+            }
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1e2a3e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            z-index: 1200;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <h1>TourGuideChina</h1>
+            <span data-i18n="logo_sub">探索中国 · 私人向导</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" data-i18n="nav_home">首页</a></li>
+            <li><a href="#guides" data-i18n="nav_guides">明星导游</a></li>
+            <li><a href="#tours" data-i18n="nav_tours">精选路线</a></li>
+            <li><a href="#testimonials" data-i18n="nav_stories">旅行故事</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">联系我们</a></li>
+        </ul>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <a href="#contact" class="btn-primary" style="padding: 10px 24px;" data-i18n="nav_btn">预约向导 <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Hero 区域 -->
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-map-marked-alt"></i> <span data-i18n="hero_badge">官方认证 · 十年口碑</span></div>
+            <h1><span data-i18n="hero_title1">深度中国</span><br><span data-i18n="hero_title2">专属中文导游</span></h1>
+            <p data-i18n="hero_desc">解锁真实的中国文化、历史与美食。资深持证导游，私家小团，定制你的非凡旅程。</p>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="#guides" class="btn-primary" data-i18n="hero_btn1">遇见向导 <i class="fas fa-user-plus"></i></a>
+                <a href="#contact" class="btn-outline" data-i18n="hero_btn2">免费咨询 →</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><h3>5000+</h3><p data-i18n="stat1">满意旅客</p></div>
+                <div class="stat-item"><h3>200+</h3><p data-i18n="stat2">资深导游</p></div>
+                <div class="stat-item"><h3>15+</h3><p data-i18n="stat3">目的地城市</p></div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://picsum.photos/id/104/700/500" alt="China Landscape">
+        </div>
+    </div>
+</section>
+
+<!-- 特色服务 -->
+<section>
+    <div class="container">
+        <div class="section-title" data-i18n="features_title">为什么选择我们？</div>
+        <div class="section-sub" data-i18n="features_sub">专业、地道、安心，打造个性化中国之旅</div>
+        <div class="features-grid">
+            <div class="feature-card"><i class="fas fa-user-graduate"></i><h3 data-i18n="feat1_title">持证金牌导游</h3><p data-i18n="feat1_desc">历史专家，语言精通，全程沉浸式讲解</p></div>
+            <div class="feature-card"><i class="fas fa-route"></i><h3 data-i18n="feat2_title">深度定制行程</h3><p data-i18n="feat2_desc">避开人潮，挖掘小众秘境与地道玩法</p></div>
+            <div class="feature-card"><i class="fas fa-headset"></i><h3 data-i18n="feat3_title">24h 管家服务</h3><p data-i18n="feat3_desc">紧急支援，灵活调整，旅途无忧</p></div>
+            <div class="feature-card"><i class="fas fa-utensils"></i><h3 data-i18n="feat4_title">当地美食体验</h3><p data-i18n="feat4_desc">向导带你品尝正宗街巷风味</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 明星导游团队 动态渲染 -->
+<section id="guides" style="background: #fefaf7;">
+    <div class="container">
+        <div class="section-title" data-i18n="guides_title">遇见你的专属向导</div>
+        <div class="section-sub" data-i18n="guides_sub">经验丰富，多语种覆盖，热爱中国文化的引路人</div>
+        <div class="guides-grid" id="guidesContainer"></div>
+    </div>
+</section>
+
+<!-- 热门旅游路线 -->
+<section id="tours">
+    <div class="container">
+        <div class="section-title" data-i18n="tours_title">精选 · 深度人文路线</div>
+        <div class="section-sub" data-i18n="tours_sub">经典与秘境结合，由专业导游领队</div>
+        <div class="tours-grid" id="toursContainer"></div>
+    </div>
+</section>
+
+<!-- 客户评价 -->
+<section id="testimonials" class="testimonials">
+    <div class="container">
+        <div class="section-title" data-i18n="testi_title">旅行者的真实声音</div>
+        <div class="section-sub" data-i18n="testi_sub">口碑见证，让旅行更有温度</div>
+        <div class="testimonial-grid" id="testimonialsContainer"></div>
+    </div>
+</section>
+
+<!-- 联系表单区域 -->
+<section id="contact">
+    <div class="container">
+        <div class="section-title" data-i18n="contact_title">开启你的中国故事</div>
+        <div class="section-sub" data-i18n="contact_sub">告诉我们你的旅行想法，我们为你匹配最佳向导</div>
+        <div class="contact-flex">
+            <div class="contact-info">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px;"><i class="fas fa-phone-alt"></i> <span data-i18n="contact_hotline">咨询专线</span></h3>
+                <p style="margin-bottom: 20px;"><i class="fas fa-envelope"></i> hello@tourguidechina.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="contact_address">中国 · 北京 / 上海 / 成都服务中心</span></p>
+                <hr style="margin: 30px 0; border-color: #f0dbce;">
+                <p><strong data-i18n="contact_wechat">微信客服</strong> : TourGuide_China</p>
+                <div class="social-icons" style="margin-top: 30px;">
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <input type="text" id="name" data-i18n-placeholder="form_name" placeholder="您的姓名 *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" data-i18n-placeholder="form_email" placeholder="电子邮箱 *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="phone" data-i18n-placeholder="form_phone" placeholder="手机/微信 (选填)">
+                    </div>
+                    <div class="form-group">
+                        <select id="travelInterest">
+                            <option value="" data-i18n="interest_placeholder">偏好目的地/路线</option>
+                            <option value="北京" data-i18n="interest_bj">北京 · 皇家文化</option>
+                            <option value="西安" data-i18n="interest_xa">西安 · 秦汉唐韵</option>
+                            <option value="成都" data-i18n="interest_cd">成都 · 熊猫与美食</option>
+                            <option value="云南" data-i18n="interest_yn">云南 · 风花雪月</option>
+                            <option value="定制" data-i18n="interest_custom">定制私人行程</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="3" id="message" data-i18n-placeholder="form_message" placeholder="您的旅行想法或需求..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;" data-i18n="form_submit">提交预约意向 <i class="fas fa-paper-plane"></i></button>
+                    <p style="font-size: 0.8rem; margin-top: 12px; text-align: center;" data-i18n="form_note">专属旅行顾问将在24h内联系您</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>TourGuideChina</h4><p data-i18n="footer_desc">专业中文向导平台，让每一次相遇都有故事。</p></div>
+            <div class="footer-col"><h4 data-i18n="footer_links">快速链接</h4><p><a href="#home" style="color:#cbd5e1; text-decoration:none;" data-i18n="nav_home">首页</a></p><p><a href="#guides" style="color:#cbd5e1; text-decoration:none;" data-i18n="nav_guides">明星导游</a></p><p><a href="#tours" style="color:#cbd5e1; text-decoration:none;" data-i18n="nav_tours">旅行路线</a></p></div>
+            <div class="footer-col"><h4 data-i18n="footer_legal">法律信息</h4><p>© 2025 tourguidechina.com</p><p>ICP 备 12345678号</p><p data-i18n="footer_license">旅行社业务经营许可证</p></div>
+        </div>
+        <div class="copyright" data-i18n="copyright">探索中国，从一位好向导开始 | 图片仅为灵感展示，实际行程以咨询为准</div>
+    </div>
+</footer>
+<div id="toastMsg" class="toast-msg">✅ 提交成功！向导会尽快联系您～</div>
+
+<script>
+    // ---------- 双语资源库 ----------
+    const i18n = {
+        zh: {
+            logo_sub: "探索中国 · 私人向导",
+            nav_home: "首页", nav_guides: "明星导游", nav_tours: "精选路线", nav_stories: "旅行故事", nav_contact: "联系我们", nav_btn: "预约向导",
+            hero_badge: "官方认证 · 十年口碑", hero_title1: "深度中国", hero_title2: "专属中文导游", hero_desc: "解锁真实的中国文化、历史与美食。资深持证导游，私家小团，定制你的非凡旅程。",
+            hero_btn1: "遇见向导", hero_btn2: "免费咨询 →",
+            stat1: "满意旅客", stat2: "资深导游", stat3: "目的地城市",
+            features_title: "为什么选择我们？", features_sub: "专业、地道、安心，打造个性化中国之旅",
+            feat1_title: "持证金牌导游", feat1_desc: "历史专家，语言精通，全程沉浸式讲解",
+            feat2_title: "深度定制行程", feat2_desc: "避开人潮，挖掘小众秘境与地道玩法",
+            feat3_title: "24h 管家服务", feat3_desc: "紧急支援，灵活调整，旅途无忧",
+            feat4_title: "当地美食体验", feat4_desc: "向导带你品尝正宗街巷风味",
+            guides_title: "遇见你的专属向导", guides_sub: "经验丰富，多语种覆盖，热爱中国文化的引路人",
+            tours_title: "精选 · 深度人文路线", tours_sub: "经典与秘境结合，由专业导游领队",
+            testi_title: "旅行者的真实声音", testi_sub: "口碑见证，让旅行更有温度",
+            contact_title: "开启你的中国故事", contact_sub: "告诉我们你的旅行想法，我们为你匹配最佳向导",
+            contact_hotline: "咨询专线", contact_address: "中国 · 北京 / 上海 / 成都服务中心", contact_wechat: "微信客服",
+            form_name: "您的姓名 *", form_email: "电子邮箱 *", form_phone: "手机/微信 (选填)", form_message: "您的旅行想法或需求...", form_submit: "提交预约意向", form_note: "专属旅行顾问将在24h内联系您",
+            interest_placeholder: "偏好目的地/路线", interest_bj: "北京 · 皇家文化", interest_xa: "西安 · 秦汉唐韵", interest_cd: "成都 · 熊猫与美食", interest_yn: "云南 · 风花雪月", interest_custom: "定制私人行程",
+            footer_desc: "专业中文向导平台，让每一次相遇都有故事。", footer_links: "快速链接", footer_legal: "法律信息", footer_license: "旅行社业务经营许可证", copyright: "探索中国，从一位好向导开始 | 图片仅为灵感展示，实际行程以咨询为准",
+            // 动态卡片内容（中英）
+            guide_card_btn: "预约该向导 →", tour_card_btn: "获取行程单"
+        },
+        en: {
+            logo_sub: "Explore China · Private Guide",
+            nav_home: "Home", nav_guides: "Star Guides", nav_tours: "Tours", nav_stories: "Stories", nav_contact: "Contact", nav_btn: "Book a Guide",
+            hero_badge: "Certified · 10 Years Trust", hero_title1: "Discover China", hero_title2: "Your Personal Guide", hero_desc: "Unlock authentic Chinese culture, history & cuisine. Licensed guides, private tours, custom journeys.",
+            hero_btn1: "Meet Guides", hero_btn2: "Free Inquiry →",
+            stat1: "Happy Travelers", stat2: "Expert Guides", stat3: "Destinations",
+            features_title: "Why Choose Us?", features_sub: "Professional, Authentic, Worry-Free Tours",
+            feat1_title: "Licensed Guides", feat1_desc: "History experts, multilingual, immersive storytelling",
+            feat2_title: "Tailor-made Routes", feat2_desc: "Avoid crowds, hidden gems & local experiences",
+            feat3_title: "24/7 Support", feat3_desc: "Emergency assistance, flexible adjustments",
+            feat4_title: "Foodie Experiences", feat4_desc: "Authentic local flavors with guide's picks",
+            guides_title: "Meet Your Personal Guide", guides_sub: "Experienced, multilingual, passionate about Chinese culture",
+            tours_title: "Selected · Cultural Journeys", tours_sub: "Classic & offbeat, led by professional guides",
+            testi_title: "Travelers' Voices", testi_sub: "Real stories from our guests",
+            contact_title: "Start Your China Story", contact_sub: "Tell us your travel ideas, we'll match you with the best guide",
+            contact_hotline: "Hotline", contact_address: "China · Beijing / Shanghai / Chengdu Service Center", contact_wechat: "WeChat",
+            form_name: "Your Name *", form_email: "Email *", form_phone: "Phone / WeChat (optional)", form_message: "Your travel thoughts or requests...", form_submit: "Submit Request", form_note: "Travel consultant will contact you within 24h",
+            interest_placeholder: "Preferred Destination", interest_bj: "Beijing · Imperial Culture", interest_xa: "Xi'an · Ancient Capitals", interest_cd: "Chengdu · Pandas & Cuisine", interest_yn: "Yunnan · Natural Wonders", interest_custom: "Custom Private Tour",
+            footer_desc: "Professional Chinese guide platform, every encounter tells a story.", footer_links: "Quick Links", footer_legal: "Legal", footer_license: "Travel Agency License", copyright: "Explore China with a great guide | Images for inspiration only",
+            guide_card_btn: "Book this Guide →", tour_card_btn: "Get Itinerary"
+        }
+    };
+
+    // 导游双语数据
+    const guidesData = {
+        zh: [
+            { name: "李梦瑶", lang: "中文 / English", exp: "国家高级导游 · 10年经验", specialty: "故宫、长城、胡同文化", img: "https://randomuser.me/api/portraits/women/68.jpg" },
+            { name: "王 翰", lang: "中文 / 粤语 / English", exp: "历史学硕士 · 深度讲解者", specialty: "西安兵马俑、丝绸之路", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+            { name: "陈 雅", lang: "中文 / Japanese / English", exp: "美食文化达人 · 摄影向导", specialty: "成都、云南秘境定制", img: "https://randomuser.me/api/portraits/women/44.jpg" }
+        ],
+        en: [
+            { name: "Mengyao Li", lang: "Chinese / English", exp: "National Senior Guide · 10 yrs", specialty: "Forbidden City, Great Wall, Hutong Culture", img: "https://randomuser.me/api/portraits/women/68.jpg" },
+            { name: "Han Wang", lang: "Chinese / Cantonese / English", exp: "MA in History · Deep Diver", specialty: "Terracotta Army, Silk Road", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+            { name: "Ya Chen", lang: "Chinese / Japanese / English", exp: "Foodie Expert · Photography Guide", specialty: "Chengdu, Yunnan hidden gems", img: "https://randomuser.me/api/portraits/women/44.jpg" }
+        ]
+    };
+
+    const toursData = {
+        zh: [
+            { name: "皇城京韵 · 5日深度", days: "5天4晚", desc: "故宫+长城+颐和园+胡同私房菜，资深导游伴游", price: "¥3800/人起", img: "https://picsum.photos/id/20/400/260" },
+            { name: "梦回长安 · 西安4日", days: "4天3晚", desc: "兵马俑专场讲解+汉服体验+不夜城美食", price: "¥2980/人起", img: "https://picsum.photos/id/104/400/260" },
+            { name: "灵秀川蜀 · 成都+九寨", days: "6天5晚", desc: "熊猫义工体验+藏羌文化+九寨仙境", price: "¥5280/人起", img: "https://picsum.photos/id/96/400/260" }
+        ],
+        en: [
+            { name: "Imperial Beijing · 5D In-depth", days: "5D/4N", desc: "Forbidden City + Great Wall + Summer Palace + Hutong Dinner", price: "from ¥3800/pax", img: "https://picsum.photos/id/20/400/260" },
+            { name: "Ancient Xi'an · 4D Journey", days: "4D/3N", desc: "Terracotta Warriors expert tour + Hanfu experience", price: "from ¥2980/pax", img: "https://picsum.photos/id/104/400/260" },
+            { name: "Sichuan Essence · Chengdu + Jiuzhai", days: "6D/5N", desc: "Panda volunteer + Tibetan culture + Jiuzhai valley", price: "from ¥5280/pax", img: "https://picsum.photos/id/96/400/260" }
+        ]
+    };
+
+    const testimonials = {
+        zh: [
+            { text: "“导游李老师博学又风趣，带我们走遍了故宫的隐秘角落，孩子听得入迷，绝对超出预期！”", author: "陈女士 · 北京5日家庭游" },
+            { text: "“定制了西安路线，向导很贴心，避开人群讲解兵马俑细节，还吃到了最地道的羊肉泡馍。太值了！”", author: "Michael (美国) · 西安深度游" },
+            { text: "“服务非常专业，从接机到送机无缝衔接。导游会拍照懂历史，下次再来还找 tourguidechina！”", author: "王先生 · 成都美食文化之旅" }
+        ],
+        en: [
+            { text: "“Guide Li was knowledgeable and fun, took us through hidden corners of the Forbidden City. Absolutely beyond expectations!”", author: "Ms. Chen · Beijing Family Trip" },
+            { text: "“Custom Xi'an tour was amazing, guide shared exclusive insights on Terracotta Warriors and the best lamb soup. Worth it!”", author: "Michael (USA) · Xi'an Deep Tour" },
+            { text: "“Professional service from airport pickup to drop-off. Guide knows history and takes great photos. Will book again!”", author: "Mr. Wang · Chengdu Food Tour" }
+        ]
+    };
+
+    let currentLang = 'zh';
+
+    function updateStaticTexts() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (i18n[currentLang][key]) el.innerText = i18n[currentLang][key];
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (i18n[currentLang][key]) el.placeholder = i18n[currentLang][key];
+        });
+        // select options 特殊处理
+        const selectEl = document.getElementById('travelInterest');
+        if (selectEl) {
+            const options = selectEl.options;
+            for (let i = 0; i < options.length; i++) {
+                const opt = options[i];
+                const val = opt.value;
+                if (val === "") opt.innerText = i18n[currentLang].interest_placeholder;
+                else if (val === "北京") opt.innerText = i18n[currentLang].interest_bj;
+                else if (val === "西安") opt.innerText = i18n[currentLang].interest_xa;
+                else if (val === "成都") opt.innerText = i18n[currentLang].interest_cd;
+                else if (val === "云南") opt.innerText = i18n[currentLang].interest_yn;
+                else if (val === "定制") opt.innerText = i18n[currentLang].interest_custom;
+            }
+        }
+    }
+
+    function renderGuides() {
+        const container = document.getElementById('guidesContainer');
+        const data = guidesData[currentLang];
+        let html = '';
+        data.forEach(g => {
+            html += `
+                <div class="guide-card">
+                    <img class="guide-img" src="${g.img}" alt="${g.name}" loading="lazy">
+                    <div class="guide-info">
+                        <div class="guide-name">${g.name}</div>
+                        <div class="guide-lang"><i class="fas fa-language"></i> ${g.lang}</div>
+                        <p style="margin: 8px 0;"><i class="fas fa-award"></i> ${g.exp}</p>
+                        <p><i class="fas fa-map-pin"></i> ${g.specialty}</p>
+                        <a href="#contact" class="btn-outline" style="margin-top: 18px; display: inline-block; font-size:0.9rem;">${i18n[currentLang].guide_card_btn}</a>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    function renderTours() {
+        const container = document.getElementById('toursContainer');
+        const data = toursData[currentLang];
+        let html = '';
+        data.forEach(t => {
+            html += `
+                <div class="tour-card">
+                    <img src="${t.img}" alt="${t.name}" style="width:100%; height:220px; object-fit:cover;">
+                    <div class="tour-info">
+                        <h3>${t.name}</h3>
+                        <p><i class="far fa-calendar-alt"></i> ${t.days}</p>
+                        <p>${t.desc}</p>
+                        <div class="tour-price">${t.price}</div>
+                        <a href="#contact" class="btn-primary" style="padding:8px 18px; font-size:0.9rem;">${i18n[currentLang].tour_card_btn}</a>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    function renderTestimonials() {
+        const container = document.getElementById('testimonialsContainer');
+        const data = testimonials[currentLang];
+        let html = '';
+        data.forEach(t => {
+            html += `
+                <div class="testi-card">
+                    <div class="testi-text">${t.text}</div>
+                    <div class="testi-author"><i class="fas fa-user-circle"></i> <span>${t.author}</span></div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    function updateAllContent() {
+        updateStaticTexts();
+        renderGuides();
+        renderTours();
+        renderTestimonials();
+        document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+        // 更新语言按钮样式
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if ((currentLang === 'zh' && btn.getAttribute('data-lang') === 'zh') ||
+                (currentLang === 'en' && btn.getAttribute('data-lang') === 'en')) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    // 语言切换事件
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang === 'zh') currentLang = 'zh';
+            else if (lang === 'en') currentLang = 'en';
+            updateAllContent();
+        });
+    });
+
+    // 表单提交 + 提示
+    const form = document.getElementById('bookingForm');
+    const toast = document.getElementById('toastMsg');
+    function showMessage(msg, isError = false) {
+        toast.textContent = msg;
+        toast.style.backgroundColor = isError ? '#b91c1c' : '#1e2a3e';
+        toast.style.opacity = '1';
+        setTimeout(() => toast.style.opacity = '0', 3000);
+    }
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name')?.value.trim();
+            const email = document.getElementById('email')?.value.trim();
+            if (!name || !email) {
+                showMessage(currentLang === 'zh' ? '请填写姓名和邮箱' : 'Please fill in name and email', true);
+                return;
+            }
+            if (!email.includes('@')) {
+                showMessage(currentLang === 'zh' ? '请输入有效的电子邮箱' : 'Please enter a valid email', true);
+                return;
+            }
+            showMessage(currentLang === 'zh' ? '✨ 感谢信任！专属旅行顾问会尽快联系您 ✨' : '✨ Thanks! Travel consultant will contact you soon ✨', false);
+            form.reset();
+        });
+    }
+
+    // 平滑滚动偏移
+    document.querySelectorAll('.nav-links a, .btn-primary[href^="#"], .btn-outline[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== '#' && targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const offset = 80;
+                    window.scrollTo({ top: targetElement.offsetTop - offset, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+
+    // 初始化
+    updateAllContent();
+</script>
+</body>
+</html>
